@@ -34,10 +34,12 @@ def load_image_into_numpy_array(data):
 def detect(img, nn):
     (H, W) = img.shape[:2]
     frame = cv.cvtColor(img, cv.COLOR_BGR2RGB)
-
+    named_classes = []
     classes, scores, boxes = model.detect(frame, Conf_threshold, NMS_threshold)
+    for x in classes:
+        named_classes.append(class_name[x])
 
-    return {"classes": classes.tolist(), "scores": scores.tolist(), "boxes": boxes.tolist()}
+    return {"classes": named_classes, "scores": scores.tolist(), "boxes": boxes.tolist()}
 
 
 @app.get("/")

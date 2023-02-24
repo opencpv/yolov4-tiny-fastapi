@@ -1,0 +1,4 @@
+fastapi==0.92.0
+numpy==1.17.4
+opencv_python==4.7.0.68
+Pillow==9.4.0
